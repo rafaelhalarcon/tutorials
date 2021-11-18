@@ -24,7 +24,14 @@ public class AlphabetSoup {
     char[] shiftAlphabet(char[] alphabet, int shift) {
         char[] shifted = Arrays.copyOf(alphabet,alphabet.length);
         for (int i = 0; i < alphabet.length; i++) {
-            int letterNum = (alphabet[i] + shift);
+//            int letterNum = (alphabet[i] + shift -  'a') % 26 + 'a';
+            int letterNum = alphabet[i] + shift;
+            while (letterNum > (int) 'z') {
+                letterNum -= 26;
+            }
+            while (letterNum < (int) 'a') {
+                letterNum+= 26;
+            }
             shifted[i] = (char)(letterNum);
         }
         return shifted;
